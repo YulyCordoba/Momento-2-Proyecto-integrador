@@ -1,4 +1,4 @@
-@startuml ModeloEcommerce
+@startuml Diagrama
 
 class Usuario {
   - idUsuario : int

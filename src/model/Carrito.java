@@ -1,13 +1,11 @@
 package model;
 
-public class Carrito {
- // Atributos
+public class Carrito implements IOperaciones{
     private int idCarrito;
     private String producto;
     private int cantidad;
     private double precioUnitario;
-
-    // Constructor con parámetros
+    
     public Carrito(int idCarrito, String producto, int cantidad, double precioUnitario) {
         this.idCarrito = idCarrito;
         this.producto = producto;
@@ -15,11 +13,9 @@ public class Carrito {
         this.precioUnitario = precioUnitario;
     }
 
-    // Constructor vacío
     public Carrito() {
     }
 
-    // Getters y Setters
     public int getIdCarrito() {
         return idCarrito;
     }
@@ -33,11 +29,7 @@ public class Carrito {
     }
 
     public void setProducto(String producto) {
-        if (producto != null && !producto.trim().isEmpty()) {
-            this.producto = producto.trim();
-        } else {
-            System.out.println("El producto no puede estar vacío.");
-        }
+        this.producto = producto;
     }
 
     public int getCantidad() {
@@ -45,11 +37,7 @@ public class Carrito {
     }
 
     public void setCantidad(int cantidad) {
-        if (cantidad > 0) {
-            this.cantidad = cantidad;
-        } else {
-            System.out.println("La cantidad debe ser mayor que 0.");
-        }
+        this.cantidad = cantidad;
     }
 
     public double getPrecioUnitario() {
@@ -57,26 +45,29 @@ public class Carrito {
     }
 
     public void setPrecioUnitario(double precioUnitario) {
-        if (precioUnitario > 0) {
-            this.precioUnitario = precioUnitario;
-        } else {
-            System.out.println("El precio debe ser mayor que 0.");
-        }
+        this.precioUnitario = precioUnitario;
     }
 
-    // Método con proceso temporal
-    public double calcularTotalConEspera() {
-        System.out.println("Calculando total del carrito...");
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        double total = cantidad * precioUnitario;
-        System.out.println("Total del carrito: $" + total);
-        return total;
+    @Override
+    public void eliminar() {
+        System.out.println("El articulo ha sido elimindo de su carrito");
+        IOperaciones.super.eliminar();
     }
+
+    @Override
+    public void buscar() {
+        System.out.println("Buscando en el carrito");
+        
+    }
+
+    @Override
+    public void guardar() {
+        System.out.println("Su articulo quedó guardado en el carrito");
+        
+    }
+
+    
+
+
+
 }
-
-
